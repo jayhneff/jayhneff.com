@@ -151,18 +151,28 @@
   .hero-cta-arrow { font-size: 1rem; transition: transform 0.2s; }
   .hero-cta:hover .hero-cta-arrow { transform: translateX(4px); }
 
-  .hero-visual {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 5rem 2.5rem;
-    background: var(--accent-blush);
-    position: relative;
-    overflow: hidden;
-  }
+.hero-visual {
+  padding: 0;
+  background: var(--accent-blush);
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh;
+}
 
-  .hero-photo-frame { position: relative; z-index: 1; }
+  .hero-photo-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
 
   .hero-photo-placeholder {
     width: 270px;
@@ -566,7 +576,7 @@
   </div>
   <div class="hero-visual">
     <div class="hero-photo-frame">
-      <img src="tedx.jpg" alt="Jayh Neff — Speaker at TEDxWilmington Women" style="width:270px; height:360px; object-fit:cover; object-position: center top; display:block; border: 1px solid var(--border-soft);">
+     <img src="jayh-hero.jpg" alt="Jayh Neff portrait" class="hero-photo">
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-bl"></div>
