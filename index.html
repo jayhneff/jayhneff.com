@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///C:/Users/johnn/Downloads/jayhneff_4.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jayh Neff</title>
-<link href="./index_files/css2" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;600;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -164,25 +164,6 @@
 
   .hero-photo-frame { position: relative; z-index: 1; }
 
-  .hero-photo-placeholder {
-    width: 270px;
-    height: 360px;
-    background: #e8e0d8;
-    border: 1px solid var(--border-soft);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    color: var(--mid);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .hero-photo-placeholder svg { opacity: 0.35; }
-
   .corner { position: absolute; width: 18px; height: 18px; border-color: var(--accent-soft); border-style: solid; }
   .corner-tl { top: -8px; left: -8px; border-width: 1.5px 0 0 1.5px; }
   .corner-tr { top: -8px; right: -8px; border-width: 1.5px 1.5px 0 0; }
@@ -239,7 +220,6 @@
     color: var(--accent-soft);
   }
 
-  /* BIO */
   .bio-grid {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
@@ -266,7 +246,6 @@
     font-style: italic;
   }
 
-  /* PULL QUOTE */
   .pull-quote {
     border-left: 1px solid var(--accent-soft);
     padding: 0.5rem 0 0.5rem 1.75rem;
@@ -307,7 +286,6 @@
     line-height: 1.6;
   }
 
-  /* BELIEFS SECTION */
   .beliefs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -348,32 +326,6 @@
     color: var(--mid);
     line-height: 1.7;
   }
-
-  /* MEDIA */
-  .media-filters {
-    display: flex;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-  }
-
-  .filter-btn {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 0.45rem 1.25rem;
-    border: 1px solid var(--border);
-    background: transparent;
-    cursor: pointer;
-    color: var(--mid);
-    border-radius: 50px;
-    transition: all 0.15s;
-  }
-
-  .filter-btn:hover { border-color: var(--accent-soft); color: var(--accent); }
-  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
 
   .media-grid {
     display: grid;
@@ -449,7 +401,6 @@
 
   .media-card:hover .media-arrow { color: var(--accent); }
 
-  /* CONTACT */
   .contact-inner {
     display: flex;
     flex-direction: column;
@@ -543,16 +494,15 @@
 <body>
 
 <nav>
-  <a href="file:///C:/Users/johnn/Downloads/jayhneff_4.html#" class="nav-logo">Jayh <em>Neff</em></a>
+  <a href="#" class="nav-logo">Jayh <em>Neff</em></a>
   <ul class="nav-links">
-    <li><a href="file:///C:/Users/johnn/Downloads/jayhneff_4.html#about">About</a></li>
-    <li><a href="file:///C:/Users/johnn/Downloads/jayhneff_4.html#beliefs">What I Believe</a></li>
-    <li><a href="file:///C:/Users/johnn/Downloads/jayhneff_4.html#media">Media</a></li>
-    <li><a href="file:///C:/Users/johnn/Downloads/jayhneff_4.html#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#beliefs">What I Believe</a></li>
+    <li><a href="#media">Media</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-text">
     <p class="hero-eyebrow">JayhNeff.com</p>
@@ -562,11 +512,11 @@
     </h1>
     <div class="hero-divider"></div>
     <p class="hero-tagline">Strategist. Activist. Trans woman. Builder of systems that leave people more free than she found them.</p>
-    <a href="file:///C:/Users/johnn/Downloads/jayhneff_4.html#about" class="hero-cta">Read Her Story <span class="hero-cta-arrow">→</span></a>
+    <a href="#about" class="hero-cta">Read Her Story <span class="hero-cta-arrow">&#8594;</span></a>
   </div>
   <div class="hero-visual">
     <div class="hero-photo-frame">
-      <img src="file:///C:/Users/johnn/Downloads/jayh-hero.jpg" alt="Jayh Neff — Speaker at TEDxWilmington Women" style="width:70%; height:auto; max-height:80vh; object-fit:cover;">
+      <img src="jayh-hero.jpg" alt="Jayh Neff — Speaker at TEDxWilmington Women" style="width:70%; height:auto; max-height:80vh; object-fit:cover; object-position: center center; display:block; border: 1px solid var(--border-soft);">
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-bl"></div>
@@ -576,7 +526,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="section-header">
@@ -587,17 +536,11 @@
     <div class="bio-grid">
       <div class="bio-text">
         <p>Jayh Neff is not easily explained through a job title. On paper, she works in performance marketing, audience growth, automation systems, and operational strategy. But that description misses the point entirely. The real story is about survival, reinvention, visibility, and the belief that people deserve the tools and freedom to build lives that actually belong to them.</p>
-
         <p>As a transgender woman, Jayh has spent years confronting what happens when authenticity collides with institutions built around appearances, hierarchy, and social comfort. Transition was not a cosmetic change. It was a confrontation with fear, survival, and the exhausting reality of being visible in a world that often treats trans existence as negotiable. That experience fundamentally changed the way she sees power — and what she chooses to build with it.</p>
-
         <div class="pull-quote"><p>Visibility without stability leaves people vulnerable. Real empowerment means access to information, income, autonomy, and the confidence to survive without hiding who you are.</p></div>
-
         <p>Professionally, Jayh is drawn to systems that give people clarity and agency rather than confusion and dependency. She has little patience for business models that exploit fear or manufacture urgency. Her work consistently bends toward independence, affordability, and communication that treats people as human beings rather than extraction opportunities. That instinct is not strategic positioning — it's personal.</p>
-
         <p>She understands the constant low-level calculations that marginalized people perform every day: Is this environment safe? Will this person respect me? How much of myself needs to stay hidden? That emotional pattern recognition sharpened into something broader — an ability to see the invisible pressures shaping other people's lives, and a drive to redesign the systems responsible for them.</p>
-
         <p>Outside of work, music shapes how Jayh understands life. Jam bands, bluegrass, funk, Phish, and the Grateful Dead represent a philosophy built around improvisation, trust, and collective presence. Improvisational music rejects perfection and rewards authenticity — which mirrors exactly how she approaches identity, community, and growth. Camping and outdoor life reinforce the rest: resilience, self-sufficiency, and the reminder that human beings existed before optimization became a personality trait.</p>
-
         <p>Jayh is also a mother. Parenthood sharpened her understanding of responsibility, empathy, and legacy — and reinforced the importance of building a world where future generations have more room to be honest about themselves than previous generations did.</p>
       </div>
       <div class="bio-sidebar">
@@ -626,7 +569,6 @@
   </div>
 </section>
 
-<!-- BELIEFS -->
 <section id="beliefs">
   <div class="section-inner">
     <div class="section-header">
@@ -669,7 +611,6 @@
   </div>
 </section>
 
-<!-- MEDIA -->
 <section id="media">
   <div class="section-inner">
     <div class="section-header">
@@ -677,31 +618,25 @@
       <h2 class="section-label">Media</h2>
       <div class="section-rule"></div>
     </div>
-
-
     <div class="media-grid" id="mediaGrid">
-
       <a href="https://youtu.be/Jm2UV70lz4w?si=23V7ryeAult5O4_X" target="_blank" rel="noopener" class="media-card">
         <span class="media-type-badge badge-tv"><span class="badge-dot"></span>TEDx Talk</span>
         <p class="media-title">TEDxWilmington Women — Featured Speaker</p>
         <p class="media-outlet">Theatre N, Wilmington, DE</p>
         <p class="media-date">May 28, 2026</p>
-        <span class="media-arrow">↗</span>
+        <span class="media-arrow">&#8599;</span>
       </a>
-
       <a href="https://youtu.be/Jm2UV70lz4w?si=23V7ryeAult5O4_X" target="_blank" rel="noopener" class="media-card">
         <span class="media-type-badge badge-tv"><span class="badge-dot"></span>Video</span>
         <p class="media-title">Watch the Full Talk on YouTube</p>
         <p class="media-outlet">YouTube</p>
         <p class="media-date">2026</p>
-        <span class="media-arrow">↗</span>
+        <span class="media-arrow">&#8599;</span>
       </a>
-
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
     <div class="contact-inner">
@@ -715,10 +650,8 @@
 
 <footer>
   <span class="footer-name">Jayh Neff</span>
-  <span class="footer-copy">© 2025 JayhNeff.com</span>
+  <span class="footer-copy">&copy; 2025 JayhNeff.com</span>
 </footer>
 
-
-
-
-</body></html>
+</body>
+</html>
