@@ -151,28 +151,18 @@
   .hero-cta-arrow { font-size: 1rem; transition: transform 0.2s; }
   .hero-cta:hover .hero-cta-arrow { transform: translateX(4px); }
 
-.hero-visual {
-  padding: 0;
-  background: var(--accent-blush);
-  position: relative;
-  overflow: hidden;
-  min-height: 90vh;
-}
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 2.5rem;
+    background: var(--accent-blush);
+    position: relative;
+    overflow: hidden;
+  }
 
-  .hero-photo-frame {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
+  .hero-photo-frame { position: relative; z-index: 1; }
 
   .hero-photo-placeholder {
     width: 270px;
@@ -576,7 +566,7 @@
   </div>
   <div class="hero-visual">
     <div class="hero-photo-frame">
-     <img src="jayh-hero.jpg" alt="Jayh Neff portrait" class="hero-photo">
+      <img src="jayh-hero.jpg" alt="Jayh Neff — Speaker at TEDxWilmington Women" style="width:270px; height:360px; object-fit:cover; object-position: center center; display:block; border: 1px solid var(--border-soft);">
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-bl"></div>
@@ -718,7 +708,7 @@
       <p class="contact-ornament">— get in touch —</p>
       <p class="contact-headline">Let's Connect</p>
       <p class="contact-sub">For media inquiries, speaking engagements, TEDx opportunities, community collaborations, or general correspondence.</p>
-      <a href="mailto:Jayh@scarletfiredev.com" class="contact-email">Jayh@scarletfiredev.com</a>
+      <a href="mailto:Jayh@scarletfiredev.co" class="contact-email">Jayh@scarletfiredev.co</a>
     </div>
   </div>
 </section>
