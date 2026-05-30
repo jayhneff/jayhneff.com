@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayh Neff</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;600;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #1a1210;
+    --white: #faf7f3;
+    --accent: #c84b2f;
+    --accent-soft: #e8b4a0;
+    --accent-light: #f5ede8;
+    --accent-blush: #f9f0ec;
+    --mid: #7a6a62;
+    --border: rgba(26,18,16,0.1);
+    --border-soft: rgba(200,75,47,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.75;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 2.5rem;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-logo em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 90vh;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 2.5rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(4rem, 9vw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.3em;
+  }
+
+  .hero-name-first { display: block; }
+
+  .hero-name-last {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-divider {
+    width: 3rem;
+    height: 1px;
+    background: var(--accent-soft);
+    margin: 1.75rem 0;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--mid);
+    max-width: 38ch;
+    font-style: italic;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--accent-soft);
+    width: fit-content;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .hero-cta:hover { color: var(--black); border-color: var(--black); }
+  .hero-cta-arrow { font-size: 1rem; transition: transform 0.2s; }
+  .hero-cta:hover .hero-cta-arrow { transform: translateX(4px); }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 2.5rem;
+    background: var(--accent-blush);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-photo-frame { position: relative; z-index: 1; }
+
+  .hero-photo-placeholder {
+    width: 270px;
+    height: 360px;
+    background: #e8e0d8;
+    border: 1px solid var(--border-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--mid);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .hero-photo-placeholder svg { opacity: 0.35; }
+
+  .corner { position: absolute; width: 18px; height: 18px; border-color: var(--accent-soft); border-style: solid; }
+  .corner-tl { top: -8px; left: -8px; border-width: 1.5px 0 0 1.5px; }
+  .corner-tr { top: -8px; right: -8px; border-width: 1.5px 1.5px 0 0; }
+  .corner-bl { bottom: -8px; left: -8px; border-width: 0 0 1.5px 1.5px; }
+  .corner-br { bottom: -8px; right: -8px; border-width: 0 1.5px 1.5px 0; }
+
+  .hero-bg-monogram {
+    position: absolute;
+    bottom: -0.15em;
+    right: -0.05em;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 18rem;
+    line-height: 1;
+    color: rgba(200,75,47,0.05);
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.02em;
+  }
+
+  section { border-bottom: 1px solid var(--border); }
+
+  .section-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 5.5rem 2.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 2.4rem;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    white-space: nowrap;
+  }
+
+  .section-rule { flex: 1; height: 1px; background: var(--border); }
+
+  .section-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--accent-soft);
+  }
+
+  /* BIO */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .bio-text p {
+    margin-bottom: 1.4rem;
+    color: #2e2420;
+    font-weight: 300;
+  }
+
+  .bio-text p:last-child { margin-bottom: 0; }
+
+  .bio-text p:first-child::first-letter {
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 0.85;
+    float: left;
+    margin-right: 0.08em;
+    margin-top: 0.08em;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-left: 1px solid var(--accent-soft);
+    padding: 0.5rem 0 0.5rem 1.75rem;
+    margin: 2rem 0;
+  }
+
+  .pull-quote p {
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1.6;
+    margin-bottom: 0 !important;
+  }
+
+  .bio-sidebar {
+    border-left: 1px solid var(--accent-soft);
+    padding-left: 2rem;
+  }
+
+  .bio-sidebar-item { margin-bottom: 1.75rem; }
+  .bio-sidebar-item:last-child { margin-bottom: 0; }
+
+  .bio-sidebar-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 0.3rem;
+  }
+
+  .bio-sidebar-value {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.6;
+  }
+
+  /* BELIEFS SECTION */
+  .beliefs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+
+  .belief-card {
+    background: var(--white);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .belief-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    color: var(--accent-soft);
+  }
+
+  .belief-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+
+  .belief-body {
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+
+  /* MEDIA */
+  .media-filters {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .filter-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.25rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    color: var(--mid);
+    border-radius: 50px;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover { border-color: var(--accent-soft); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
+
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .media-card {
+    background: var(--white);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .media-card:hover { background: var(--accent-blush); }
+
+  .media-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .badge-podcast { color: #9b7db8; }
+  .badge-tv { color: #3a8a6e; }
+  .badge-press { color: var(--accent); }
+
+  .badge-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .badge-podcast .badge-dot { background: #9b7db8; }
+  .badge-tv .badge-dot { background: #3a8a6e; }
+  .badge-press .badge-dot { background: var(--accent); }
+
+  .media-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    color: var(--black);
+    margin-top: 0.25rem;
+  }
+
+  .media-outlet { font-size: 0.85rem; font-weight: 300; color: var(--mid); font-style: italic; }
+
+  .media-date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--accent-soft);
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  .media-arrow {
+    font-size: 0.9rem;
+    color: var(--accent-soft);
+    align-self: flex-end;
+    margin-top: 0.25rem;
+    transition: color 0.2s;
+  }
+
+  .media-card:hover .media-arrow { color: var(--accent); }
+
+  /* CONTACT */
+  .contact-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .contact-ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    color: var(--accent-soft);
+    margin-bottom: 1rem;
+  }
+
+  .contact-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .contact-sub {
+    color: var(--mid);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .contact-email {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft);
+    padding-bottom: 0.15rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .contact-email:hover { color: var(--black); border-color: var(--black); }
+
+  footer {
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    color: var(--mid);
+  }
+
+  .footer-copy {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--mid);
+    text-transform: uppercase;
+  }
+
+  .media-card[data-hidden="true"] { display: none; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0.9rem 1.25rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text { padding: 4rem 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero-visual { display: none; }
+    .section-inner { padding: 3.5rem 1.5rem; }
+    .bio-grid { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Jayh <em>Neff</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#beliefs">What I Believe</a></li>
+    <li><a href="#media">Media</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-text">
+    <p class="hero-eyebrow">JayhNeff.com</p>
+    <h1 class="hero-name">
+      <span class="hero-name-first">Jayh</span>
+      <span class="hero-name-last">Neff</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Strategist. Activist. Trans woman. Builder of systems that leave people more free than she found them.</p>
+    <a href="#about" class="hero-cta">Read Her Story <span class="hero-cta-arrow">&#8594;</span></a>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-photo-frame">
+      <img src="jayh-hero.jpg" alt="Jayh Neff — Speaker at TEDxWilmington Women" style="width:270px; height:360px; object-fit:cover; object-position: center center; display:block; border: 1px solid var(--border-soft);">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+    <div class="hero-bg-monogram">JN</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-label">About</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-text">
+        <p>Jayh Neff is not easily explained through a job title. On paper, she works in performance marketing, audience growth, automation systems, and operational strategy. But that description misses the point entirely. The real story is about survival, reinvention, visibility, and the belief that people deserve the tools and freedom to build lives that actually belong to them.</p>
+
+        <p>As a transgender woman, Jayh has spent years confronting what happens when authenticity collides with institutions built around appearances, hierarchy, and social comfort. Transition was not a cosmetic change. It was a confrontation with fear, survival, and the exhausting reality of being visible in a world that often treats trans existence as negotiable. That experience fundamentally changed the way she sees power — and what she chooses to build with it.</p>
+
+        <div class="pull-quote"><p>Visibility without stability leaves people vulnerable. Real empowerment means access to information, income, autonomy, and the confidence to survive without hiding who you are.</p></div>
+
+        <p>Professionally, Jayh is drawn to systems that give people clarity and agency rather than confusion and dependency. She has little patience for business models that exploit fear or manufacture urgency. Her work consistently bends toward independence, affordability, and communication that treats people as human beings rather than extraction opportunities. That instinct is not strategic positioning — it's personal.</p>
+
+        <p>She understands the constant low-level calculations that marginalized people perform every day: Is this environment safe? Will this person respect me? How much of myself needs to stay hidden? That emotional pattern recognition sharpened into something broader — an ability to see the invisible pressures shaping other people's lives, and a drive to redesign the systems responsible for them.</p>
+
+        <p>Outside of work, music shapes how Jayh understands life. Jam bands, bluegrass, funk, Phish, and the Grateful Dead represent a philosophy built around improvisation, trust, and collective presence. Improvisational music rejects perfection and rewards authenticity — which mirrors exactly how she approaches identity, community, and growth. Camping and outdoor life reinforce the rest: resilience, self-sufficiency, and the reminder that human beings existed before optimization became a personality trait.</p>
+
+        <p>Jayh is also a mother. Parenthood sharpened her understanding of responsibility, empathy, and legacy — and reinforced the importance of building a world where future generations have more room to be honest about themselves than previous generations did.</p>
+      </div>
+      <div class="bio-sidebar">
+        <div class="bio-sidebar-item">
+          <p class="bio-sidebar-label">She / Her</p>
+          <p class="bio-sidebar-value">Trans woman. Out and visible by choice.</p>
+        </div>
+        <div class="bio-sidebar-item">
+          <p class="bio-sidebar-label">Work</p>
+          <p class="bio-sidebar-value">Performance marketing, systems strategy, audience ecosystems</p>
+        </div>
+        <div class="bio-sidebar-item">
+          <p class="bio-sidebar-label">Activism</p>
+          <p class="bio-sidebar-value">Trans empowerment rooted in economic independence, not just representation</p>
+        </div>
+        <div class="bio-sidebar-item">
+          <p class="bio-sidebar-label">Interests</p>
+          <p class="bio-sidebar-value">Live music, improvisation, outdoor life, self-sufficiency</p>
+        </div>
+        <div class="bio-sidebar-item">
+          <p class="bio-sidebar-label">Speaking</p>
+          <p class="bio-sidebar-value">TEDxWilmington Women speaker, May 2026. Available for panels, podcasts &amp; media appearances</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BELIEFS -->
+<section id="beliefs">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-label">What I Believe</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="beliefs-grid">
+      <div class="belief-card">
+        <span class="belief-num">01</span>
+        <p class="belief-title">Visibility is proof.</p>
+        <p class="belief-body">When people see someone survive openly, it gives them permission to imagine different possibilities for themselves. Trans visibility matters not as branding, but as evidence that trans people can lead, build, parent, and thrive.</p>
+      </div>
+      <div class="belief-card">
+        <span class="belief-num">02</span>
+        <p class="belief-title">Representation without economics is fragile.</p>
+        <p class="belief-body">Seeing yourself reflected in culture matters. But without economic mobility, stability, and access to opportunity, visibility alone leaves people exposed. Real empowerment requires both.</p>
+      </div>
+      <div class="belief-card">
+        <span class="belief-num">03</span>
+        <p class="belief-title">Systems amplify the values behind them.</p>
+        <p class="belief-body">Technology is not neutral. A system optimized only for profit eventually dehumanizes people. A system designed around empowerment can create genuine freedom. The difference is intentional.</p>
+      </div>
+      <div class="belief-card">
+        <span class="belief-num">04</span>
+        <p class="belief-title">Authenticity and ambition are not opposites.</p>
+        <p class="belief-body">You do not need to fragment yourself to survive. Vulnerability and competence can coexist. Living openly is not a liability — it is a form of leadership that gives others permission to do the same.</p>
+      </div>
+      <div class="belief-card">
+        <span class="belief-num">05</span>
+        <p class="belief-title">People deserve to grow publicly.</p>
+        <p class="belief-body">There is a dangerous pressure to pretend you have always had yourself figured out. Jayh believes people should be allowed to evolve in real time — to become more honest about who they are without being punished for it.</p>
+      </div>
+      <div class="belief-card">
+        <span class="belief-num">06</span>
+        <p class="belief-title">Trans people deserve power, not just acceptance.</p>
+        <p class="belief-body">Tolerance is a low bar. The goal is trans people with stability, visibility, economic leverage, and the freedom to shape the future — not merely survive inside it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section id="media">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-label">Media</h2>
+      <div class="section-rule"></div>
+    </div>
+
+
+    <div class="media-grid" id="mediaGrid">
+
+      <a href="https://youtu.be/Jm2UV70lz4w?si=23V7ryeAult5O4_X" target="_blank" rel="noopener" class="media-card">
+        <span class="media-type-badge badge-tv"><span class="badge-dot"></span>TEDx Talk</span>
+        <p class="media-title">TEDxWilmington Women — Featured Speaker</p>
+        <p class="media-outlet">Theatre N, Wilmington, DE</p>
+        <p class="media-date">May 28, 2026</p>
+        <span class="media-arrow">&#8599;</span>
+      </a>
+
+      <a href="https://youtu.be/Jm2UV70lz4w?si=23V7ryeAult5O4_X" target="_blank" rel="noopener" class="media-card">
+        <span class="media-type-badge badge-tv"><span class="badge-dot"></span>Video</span>
+        <p class="media-title">Watch the Full Talk on YouTube</p>
+        <p class="media-outlet">YouTube</p>
+        <p class="media-date">2026</p>
+        <span class="media-arrow">&#8599;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <p class="contact-ornament">— get in touch —</p>
+      <p class="contact-headline">Let's Connect</p>
+      <p class="contact-sub">For media inquiries, speaking engagements, TEDx opportunities, community collaborations, or general correspondence.</p>
+      <a href="mailto:Jayh@scarletfiredev.co" class="contact-email">Jayh@scarletfiredev.co</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Jayh Neff</span>
+  <span class="footer-copy">&copy; 2025 JayhNeff.com</span>
+</footer>
+
+
+</body>
+</html>
